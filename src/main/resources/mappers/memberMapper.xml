@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.spring.javagreenS.dao.MemberDAO">
+  <select id="getMemIdCheck" resultType="com.spring.javagreenS.vo.MemberVO">
+  select * from member2 where mid = #{mid};
+  </select>
+  
+  <select id="getnickNameCheck" resultType="com.spring.javagreenS.vo.MemberVO">
+  select * from member2 where nickName = #{nickName};
+  </select>
+  
+  <insert id="setMemInputOk">
+   insert into member2 values(default,#{vo.mid},#{vo.pwd},#{vo.nickName},#{vo.name},#{vo.gender},#{vo.birthday},#{vo.tel},#{vo.address},#{vo.email},#{vo.homePage},#{vo.job},#{vo.hobby},#{vo.photo},#{vo.content},#{vo.userInfor},default,default,default,default,default,default,default);
+  </insert>
+  <update id="setMemberVisitProcess">
+    update member2 set todayCnt= #{todayCnt}, visitCnt= visitCnt+1, lastDate=now(), point = point+ #{newPoint} where mid = #{mid};
+  </update>
+</mapper>
